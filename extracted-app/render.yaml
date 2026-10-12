@@ -1,0 +1,23 @@
+# Render blueprint: the game server (rooms, drawing, guesses, scores, word pictures).
+# The app itself is hosted on Vercel (see app/vercel.json). Setup steps: DEPLOY.md.
+services:
+  - type: web
+    name: draw-guess-server
+    runtime: node
+    plan: free
+    # Closest Render region to India. Others: oregon, ohio, virginia, frankfurt.
+    region: singapore
+    # Only changes in server/ redeploy the server.
+    rootDir: server
+    buildCommand: npm ci && npm run build
+    startCommand: npm start
+    healthCheckPath: /health
+    autoDeploy: true
+    envVars:
+      - key: NODE_VERSION
+        value: "24"
+      # The Vercel site(s) allowed to use this server, comma-separated.
+      # Render asks for this when you apply the blueprint, e.g.
+      #   https://draw-guess.vercel.app,https://draw-guess-*.vercel.app
+      - key: CORS_ORIGIN
+        sync: false

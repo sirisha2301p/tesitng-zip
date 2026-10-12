@@ -1,0 +1,15 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": null,
+  "installCommand": "npm ci",
+  "buildCommand": "node scripts/check-server-url.js && npx expo export --platform web --clear",
+  "outputDirectory": "dist",
+  "cleanUrls": true,
+  "rewrites": [{ "source": "/:path*", "destination": "/" }],
+  "headers": [
+    {
+      "source": "/_expo/static/(.*)",
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }]
+    }
+  ]
+}
