@@ -8,7 +8,7 @@ services:
     # Closest Render region to India. Others: oregon, ohio, virginia, frankfurt.
     region: singapore
     # Only changes in server/ redeploy the server.
-    rootDir: server
+    rootDir: extracted-app/server
     buildCommand: npm ci && npm run build
     startCommand: npm start
     healthCheckPath: /health
