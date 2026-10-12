@@ -17,7 +17,7 @@ jobs:
       - name: Extract ZIP
         run: |
           mkdir -p extracted-app
-          unzip -o application.zip -d extracted-app
+          unzip -o server.zip -d extracted-app
 
       - name: Commit extracted files
         run: |
